@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jquery-product-slider</title>
+	<style type="text/css" media="screen">
+	 #area1 {
+	   width: 300px;
+	   height: 50px;
+	   overflow: hidden;
+	   position: relative; }
+	   #area1 p {
+	     position: absolute;
+	     white-space: nowrap;
+	     top: 0;
+	     left: 0; 
+	     margin: 0; }
+	 .ui-slider {
+	   width: 70%;
+	   position: absolute;
+	   bottom: 4px;
+	   left: 45px;
+	   height: 15px;
+	   background: #ccc; }
+	   .ui-slider-handle {
+  	   display: block;
+  	   width: 50px;
+  	   height: 15px;
+  	   background: black;
+  	   position: absolute; }
+  	.prev {
+  	  position: absolute;
+  	  bottom: 0;
+  	  left: 0; }
+  	.next {
+  	  position: absolute;
+  	  bottom: 0;
+  	  right: 0; }
+	</style>
+	<script src="jquery-1.2.6.js" type="text/javascript" charset="utf-8"></script>
+	<script src="ui.core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="ui.slider.js" type="text/javascript" charset="utf-8"></script>
+	<script src="product-slider.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+	    $('#area1').productSlider({ viewport: 'p' });
+	  });
+	</script>
+</head>
+<body>
+  <div id="area1">
+    <a class="prev">Back</a>
+    <a class="next">Next</a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+</body>
+</html>

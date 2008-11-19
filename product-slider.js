@@ -1,35 +1,33 @@
 (function($) {
-  $.fn.productBrowser = function(elem) {
-    this.each($.productBrowser);
-  }
-  
-  $.productBrowser = function() {
-    var scrollable = $(this),
-        list       = scrollable.find('ul'),
-        settings   = $.extend($.productBrowser.settings, arguments[0] || {});
+  $.fn.productSlider = function() {
+    var settings = $.extend($.productSlider.settings, arguments[0] || {});
+    
+    this.each(function() {
+      var scrollable = $(this),
+          viewport   = scrollable.children(settings.viewport);
+      
+      if (scrollable.children('.ui-slider').length < 1)
+        scrollable.append('<div class="ui-slider"/>');
         
-      scrollable.slider({
-        handle:  settings.handle,
-        max:     ul.innerWidth() - $(this).outerWidth(),
-        animate: settings.animate,
-        //stop:    scrollHorizontal,
-        slide:   function(event, ui) {
-          list.css('left', '-' + ui.value + 'px');
+      var track = scrollable.find('.ui-slider');
+      track.slider({
+        max:   viewport.innerWidth() - scrollable.outerWidth(),
+        slide: function(event, ui) {
+          viewport.css('left', '-' + ui.value + 'px');
         }
       });
 
-      $(settings.prev).click(function() { scrollable.slider("moveTo", "-=" + settings.clickInc); });
-      $(settings.next).click(function() { scrollable.slider("moveTo", "+=" + settings.clickInc); });
-    }
-  }
+      $(settings.prev).click(function() { track.slider("moveTo", "-=" + settings.clickInc); });
+      $(settings.next).click(function() { track.slider("moveTo", "+=" + settings.clickInc); });
+    });
+  };
   
-  $.extend($.productBrowser, {
+  $.productSlider = {
     settings: {
-      clickInc: '50px',
-  	  handle:   '.handle',
-  	  prev:     '.prev',
-  	  next:     '.next',
-  	  animate:  false
-  	}
-  });
+      clickInc: 150,
+      prev:     '.prev',
+      next:     '.next',
+      viewport: 'ul'
+    }
+  };
 })(jQuery);
